@@ -1,0 +1,29 @@
+* Name: Tiana Noll-Walker
+* Name: Elisha Phillips
+* Date: 02/16/2022
+* Course: CPT_S 132 Section 01, Spring 22 
+* Assignment: HW5 - Life 
+* Description: Report file for HW5
+
+Questions:
+
+ 1. How did you go about starting this project?
+ 
+	
+ 
+ 2. What works and what doesn't?
+ 
+ 
+ 
+ 3. The surprises or problems you encountered while implementing this application.
+ 
+ 
+ 
+ 4. The most important thing(s) you learned from this assignment.
+ 
+ 
+ 
+ 5. What you would do differently next time.
+ 
+ 
+ 
