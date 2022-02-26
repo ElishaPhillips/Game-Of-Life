@@ -1,6 +1,7 @@
 package Life;
 
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -8,45 +9,33 @@ import java.util.ArrayList;
 /**
  * This is a simple client for the BigOval class
  */
-public class Buttons extends javax.swing.JFrame
+public class Buttons extends lifeGUI
         implements java.awt.event.ActionListener {
-    /**
-     * The method from ActionListener
-     * @param e The action that triggered this handler
-     */
-    @Override
-    public void actionPerformed(java.awt.event.ActionEvent e) {
-        javax.swing.JButton btn;
-        btn = (javax.swing.JButton)e.getSource();
-        btn.setText("Next Color");
-    }
 
     // fields for counter
-    private int genCount;
-    private int length;
+    private int genCount=0;
+    private int length=0;
     // fields for the buttons
-    private javax.swing.JButton nextButton;
-    private javax.swing.JButton prevButton;
-    //public static javax.swing.JPanel toolbar = new javax.swing.JPanel();
+    static javax.swing.JButton nextButton = new javax.swing.JButton(">> ");
+    static javax.swing.JButton prevButton = new javax.swing.JButton("<< ");
+    static javax.swing.JToolBar toolbar = new JToolBar();
+    static ArrayList<int[][]> gridList = new ArrayList<int[][]>();
 
-    private ArrayList<int[][]> gridList = new ArrayList<int[][]>();
-    private lifeGUI display = new lifeGUI();
 
-    /**
-     * Create the ButtonButton
-     */
     public Buttons() {
+        toolbar.add(prevButton, BorderLayout.WEST);
+        toolbar.add(nextButton, BorderLayout.EAST);
 
-        // button for previous color, add to toolbar
-        prevButton = new javax.swing.JButton("<< " + length);
+        c.add(toolbar, BorderLayout.NORTH);
 
-        // button for next color, add to toolbar
-        nextButton = new javax.swing.JButton("1 >>");
-
-        //toolbar.add(nextButton, BorderLayout.EAST);
-        //toolbar.add(prevButton, BorderLayout.WEST);
-
-        // add action listener for previous button
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            // inner class for button event
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                // call method to set next dot color and update buttons
+                nextGen();
+            }
+        });
         prevButton.addActionListener(new java.awt.event.ActionListener() {
             // inner class for button event
             @Override
@@ -56,25 +45,20 @@ public class Buttons extends javax.swing.JFrame
 
             }
         });
-
-        // add action listener for next button
-        nextButton.addActionListener(new java.awt.event.ActionListener() {
-            // inner class for button event
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                // call method to set next dot color and update buttons
-                nextGen();
-            }
-        });
-
-
-        // finally, set the window to be visible
-        setVisible(true);
     }
+    /**
+     * The method from ActionListener
+     * @param e The action that triggered this handler
+     */
+    @Override
+    public void actionPerformed(java.awt.event.ActionEvent e) {
+
+    }
+
 
     public void retrieveGrid(ArrayList<int[][]> l) {
         gridList = l;
-        length = gridList.size();
+        length = gridList.size()-1;
     }
 
 
@@ -91,7 +75,8 @@ public class Buttons extends javax.swing.JFrame
         prevButton.setText(String.valueOf(prevIndex(genCount)) + " <<");
 
         // Set next generation
-        display.updateGridLayout(gridList.get(genCount));
+        //System.out.println(gridList.get(genCount));
+        super.updateGridLayout(gridList.get(genCount));
 
     }
 
@@ -108,7 +93,8 @@ public class Buttons extends javax.swing.JFrame
         prevButton.setText(String.valueOf(genCount) + " <<");
 
         // Set prev generation
-        display.updateGridLayout(gridList.get(genCount));
+        //System.out.println(gridList.get(genCount));
+        super.updateGridLayout(gridList.get(genCount));
     }
 
 
