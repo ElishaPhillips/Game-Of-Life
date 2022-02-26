@@ -91,14 +91,8 @@ public class lifePrint {
     public void GUI(ArrayList<int[][]> gridList) {
         //Draw window
         display.drawGridLayout(gridList.get(0));
-        wait(1000);
-        int x = gridList.size();
-        for (int i=1;i<x;i++) {
-            display.updateGridLayout(gridList.get(i));
-            wait(1000);
-        }
-        //passing arraylist to buttonclass
         btn.retrieveGrid(gridList);
+
 
     }
     public static void wait(int ms)
